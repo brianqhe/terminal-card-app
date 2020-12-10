@@ -198,7 +198,11 @@ module Game
     end
 
     def display_scores()
-        puts @scoreboard
+        if @scoreboard.empty?
+            puts "The scoreboard is currently empty..."
+        else
+            @scoreboard.each {|key,value| puts "#{key.capitalize} has taken #{value} turns to finish the game"}
+        end
     end
 
     def display_lowest()
