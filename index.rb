@@ -4,9 +4,12 @@ require_relative 'punishments'
 include Punishments
 include Game
 
+def display_welcome()
+    puts "Ride the Bus!"
+    puts "Welcome to this terminal app of a simple card game\n"
+end
+
 def display_menu()
-    system("clear")
-    puts "Welcome to your this card game!"
     puts "Please see the menu below"
     puts "1. Play the game"
     puts "2. Instructions"
@@ -27,6 +30,7 @@ def display_menu()
     when 1
         Game.game_start()
         display_menu()
+        system("clear")
         puts "Returning to Main Menu..."
     when 2
         puts "Here are the instructions - "
@@ -36,17 +40,21 @@ def display_menu()
         Punishments.display_punishments()
         puts "Press enter to return to main menu..."
         gets
+        system("clear")
         display_menu()
     when 4
         puts Game.display_lowest()
         puts Punishments.random_punshiment()
         puts "Press enter to return to main menu..."
         gets
+        system("clear")
         display_menu()
     when 5
         puts "Goodbye, thanks for playing!"
         exit(0)
     end
 end
+
+display_welcome()
 
 display_menu()
