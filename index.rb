@@ -1,12 +1,8 @@
 require_relative 'validator'
 require_relative 'game'
+require_relative 'punishments'
+include Punishments
 include Game
-
-punishments = ["do 10 pushups", "do 20 star jumps", "do 10 sit ups", "do 5 squat jumps"]
-
-def random_punshiment(array)
-    array.sample
-end
 
 def display_menu()
     system("clear")
@@ -35,19 +31,20 @@ def display_menu()
     when 2
         puts "Here are the instructions - "
     when 3
-        puts "here's the scores"
+        puts "Here are the current the scores"
         Game.display_scores()
-        puts "Press enter to return to main menu"
+        Punishments.display_punishments()
+        puts "Press enter to return to main menu..."
         gets
         display_menu()
-        puts "Returning to Main Menu..."
     when 4
         puts Game.display_lowest()
-        puts "Press enter to return to main menu"
+        puts Punishments.random_punshiment()
+        puts "Press enter to return to main menu..."
         gets
         display_menu()
     when 5
-        puts "goodbye, thanks for playing"
+        puts "Goodbye, thanks for playing!"
         exit(0)
     end
 end
