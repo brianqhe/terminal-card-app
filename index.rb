@@ -1,6 +1,7 @@
 require_relative 'validator'
 require_relative 'game'
 require_relative 'punishments'
+require_relative 'instructions'
 include Punishments
 include Game
 
@@ -33,7 +34,11 @@ def display_menu()
         system("clear")
         puts "Returning to Main Menu..."
     when 2
-        puts "Here are the instructions - "
+        instructions()
+        puts "Press enter to return to main menu..."
+        gets
+        system("clear")
+        display_menu()
     when 3
         puts "Here are the current the scores"
         Game.display_scores()
