@@ -19,7 +19,7 @@ def display_menu()
     puts "5. Exit Game"
 
     input = gets.chomp()
-    input_valid = Validators.validate_input(input)
+    input_valid = Validator.validate_input(input)
     if !input_valid
         puts "Invalid input, please enter a number from 1-5"
         puts "Press enter to continue"
@@ -42,14 +42,16 @@ def display_menu()
     when 3
         puts "Here are the current the scores"
         Game.display_scores()
-        Punishments.display_punishments()
+        punishments = ["do 10 pushups", "do 20 star jumps", "do 10 sit ups", "do 5 squat jumps"]
+        Punishments.display_punishments(punishments)
         puts "Press enter to return to main menu..."
         gets
         system("clear")
         display_menu()
     when 4
         puts Game.display_lowest()
-        puts Punishments.random_punshiment()
+        punishments = ["do 10 pushups", "do 20 star jumps", "do 10 sit ups", "do 5 squat jumps"]
+        puts Punishments.random_punshiment(punishments)
         puts "Press enter to return to main menu..."
         gets
         system("clear")

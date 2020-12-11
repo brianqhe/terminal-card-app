@@ -1,7 +1,8 @@
+require 'colorize'
+
 module Game
     @counter = 0
     @scoreboard = {}
-
 
     def game_start()
         card_values = {
@@ -37,7 +38,7 @@ module Game
         level_4 = false
         play_again = false
         
-        puts "tell me your name"
+        puts "tell me your name".colorize(:blue)
         name = gets.chomp.capitalize()
     
         while game == true
