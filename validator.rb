@@ -1,4 +1,4 @@
-module Validators
+module Validator
     def self.validate_input(input)
       # convert input to integer
       num_input = input.to_i

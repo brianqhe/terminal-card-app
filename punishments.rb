@@ -1,13 +1,15 @@
 module Punishments
-    @punishments = ["do 10 pushups", "do 20 star jumps", "do 10 sit ups", "do 5 squat jumps"]
 
-    def display_punishments()
+    def display_punishments(array)
         puts "\nThe current list of punishments are -"
-        @punishments.each {|x| puts "\t #{x.capitalize}"}
+        array.each {|x| puts "\t #{x.capitalize}"}
     end
 
-    def random_punshiment()
-        puts "The random punishment that was selected is... #{@punishments.sample}"
+    def random_punshiment(array)
+        array.sample
     end
 
+    def selected_punishment(array)
+        puts "The random punishment that was selected is... #{array.sample}"
+    end
 end

@@ -1,13 +1,15 @@
-require_relative '../index'
 # require_relative '../punishments'
-# require_relative '../game'
+
+# describe 'punishment' do
+#     it 'should select a random punishment from the array' do
+#         expect(Punishments.random_punishment(['do 10 pushups']).to eq("do 10 pushups"))
+#     end
+# end
+
 # require_relative '../validator'
 
-describe 'display_welcome' do
-    it 'should display the welcome message' do
-        expect(display_welcome()).to eq(
-            "Ride the Bus!
-            Welcome to this terminal app of a simple card game\n"
-        )
-    end
-end
+# describe 'validates' do
+#     it 'checks if input is valid' do
+#         expect(Validator.validate_input("1")).to eq(true)
+#     end
+# end
