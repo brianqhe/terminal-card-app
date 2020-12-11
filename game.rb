@@ -1,10 +1,23 @@
 require 'colorize'
+require 'artii'
 
 module Game
     @counter = 0
     @scoreboard = {}
 
+    def self.random_suit(array)
+        array.sample
+    end
+
+    def self.random_key(hash)
+        hash.keys.sample.to_s
+    end
+
     def game_start()
+        system("clear")
+        a = Artii::Base.new 
+        puts a.asciify("Game Start !").colorize(:light_blue)
+
         card_values = {
             "A" => 14, 
             "2" => 2,
@@ -22,7 +35,7 @@ module Game
         }
         
         suits_name = ["Spades", "Diamonds", "Hearts", "Clubs"]
-        suits_symbols = ["♠", "♦", "♥", "♣"]
+        suits_symbols = ["♠".colorize(:blue), "♦".colorize(:red), "♥".colorize(:red), "♣".colorize(:blue)]
         colors = ["Red", "Black"]
         suits_hash = {"Spades" => 'Black', "Diamonds" => "Red", "Hearts" => "Red", "Clubs" => "Black"}
         suits_symbol = {"Spades" => "♠", "Diamonds" => "♦", "Hearts" => "♥", "Clubs" => "♣"}
@@ -38,50 +51,50 @@ module Game
         level_4 = false
         play_again = false
         
-        puts "tell me your name".colorize(:blue)
+        print "Enter your name: ".colorize(:blue)
         name = gets.chomp.capitalize()
     
         while game == true
             while level_1 == true
-                card_number = card_values.keys.sample.to_s
-                suit = suits_symbols.sample.to_s
+                card_number = random_key(card_values)
+                suit = random_suit(suits_symbols)
                 card = [["┌───────────┐"],["│ #{card_number}         │"],["│           │"],["│           │"],["│     #{suit}     │"],["│           │"],["│           │"],["│         #{card_number} │"],["└───────────┘"],]
                 puts facedown_card
                 puts "Guess whether the card is red or black"
                 guess = gets.chomp.capitalize
                 if guess == symbol_colour[suit]
                     puts card
-                    puts "\nCorrect!"
+                    puts "\nCorrect!".colorize(:green)
                     level_1 = false
                     level_2 = true
                     next
                 else
                     puts card
-                    puts "\nIncorrect..."
+                    puts "\nIncorrect...".colorize(:red)
                     @counter += 1
                 end
             end
             while level_2 == true
-                random_number2 = card_values.keys.sample.to_s
-                random_suit2 = suits_symbols.sample.to_s
+                random_number2 = random_key(card_values)
+                random_suit2 = random_suit(suits_symbols)
                 card2 = [["┌───────────┐"],["│ #{random_number2}         │"],["│           │"],["│           │"],["│     #{random_suit2}     │"],["│           │"],["│           │"],["│         #{random_number2} │"],["└───────────┘"],]
                 puts "Guess whether your next card is higher or lower"
                 higher_or_lower = gets.chomp
                 if higher_or_lower == "higher" && ((card_values[random_number2.to_s].to_i > card_values[card_number.to_s].to_i) == true)
                     puts card2
-                    puts "\nCorrect!"
+                    puts "\nCorrect!".colorize(:green)
                     level_2 = false
                     level_3 = true
                     next
                 elsif higher_or_lower == "lower" && ((card_values[random_number2.to_s].to_i < card_values[card_number.to_s].to_i) == true)
                     puts card2
-                    puts "\nCorrect!"
+                    puts "\nCorrect!".colorize(:green)
                     level_2 = false
                     level_3 = true
                     next
                 else
                     puts card2
-                    puts "\nIncorrect..."
+                    puts "\nIncorrect...".colorize(:red)
                     level_2 = false
                     level_1 = true
                     level_3 = false
@@ -103,19 +116,19 @@ module Game
                 outside = card_values[random_number3.to_s].to_i < card_values[card_number.to_s].to_i || card_values[random_number3.to_s].to_i > card_values[random_number2.to_s].to_i
                 if inside_or_outside == "inside" && inside
                     puts card3
-                    puts "\nCorrect!"
+                    puts "\nCorrect!".colorize(:green)
                     level_3 = false
                     level_4 = true
                     next
                 elsif inside_or_outside == "outside" && outside
                     puts card3
-                    puts "\nCorrect!"
+                    puts "\nCorrect!".colorize(:green)
                     level_3 = false
                     level_4 = true
                     next
                 else
                     puts card3
-                    puts "\nIncorrect..."
+                    puts "\nIncorrect...".colorize(:red)
                     level_3 = false
                     level_4 = false
                     level_1 = true
@@ -130,8 +143,8 @@ module Game
                 what_suit = gets.chomp
                 if what_suit == "spades" && random_suit4 == "♠"
                     puts card4
-                    puts "\nCorrect!"
-                    puts "Congratulations! You've won the game!"
+                    puts "\nCorrect!".colorize(:green)
+                    puts "Congratulations! You've won the game!".colorize(:green)
                     level_4 = false
                     play_again = true
                     @counter +=1
@@ -142,7 +155,7 @@ module Game
                 elsif what_suit == "hearts" && random_suit4 == "♥"
                     puts card4
                     puts "\nCorrect!"
-                    puts "Congratulations! You've won the game!"
+                    puts "Congratulations! You've won the game!".colorize(:green)
                     level_4 = false
                     play_again = true
                     @counter +=1
@@ -152,8 +165,8 @@ module Game
                     next
                 elsif what_suit == "clubs" && random_suit4 == "♣"
                     puts card4
-                    puts "\nCorrect!"
-                    puts "Congratulations! You've won the game!"
+                    puts "\nCorrect!".colorize(:green)
+                    puts "Congratulations! You've won the game!".colorize(:green)
                     level_4 = false
                     play_again = true
                     @counter +=1
@@ -163,8 +176,8 @@ module Game
                     next
                 elsif what_suit == "diamonds" && random_suit4 == "♦"
                     puts card4
-                    puts "\nCorrect!"
-                    puts "Congratulations! You've won the game!"
+                    puts "\nCorrect!".colorize(:green)
+                    puts "Congratulations! You've won the game!".colorize(:green)
                     level_4 = false
                     play_again = true
                     @counter +=1
@@ -174,7 +187,7 @@ module Game
                     next
                 else
                     puts card4
-                    puts "\nIncorrect..."
+                    puts "\nIncorrect...".colorize(:red)
                     level_4 = false
                     level_1 = true
                     @counter += 1
@@ -186,11 +199,11 @@ module Game
                     if again == "y"
                         level_1 = true
                         play_again = false
-                        puts "tell me your name"
+                        print "Enter you name: "
                         name = gets.chomp()
                         game = true
                     else
-                        puts "thanks for playing!"
+                        puts "Thanks for playing!"
                         play_again = false
                         game = false
                     end
@@ -208,8 +221,14 @@ module Game
 
     def display_lowest()
         if @scoreboard.empty?
+            system("clear")
+            a = Artii::Base.new 
+            puts a.asciify("Judgement Time !").colorize(:magenta)
             puts "The scoreboard is currently empty..."
         else
+            system("clear")
+            a = Artii::Base.new 
+            puts a.asciify("Judgement Time !").colorize(:magenta)
             maximum = @scoreboard.values.max
             puts "The person who took the most number of turns was #{@scoreboard.key(maximum)}"
         end
