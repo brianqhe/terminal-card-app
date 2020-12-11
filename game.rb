@@ -35,7 +35,7 @@ module Game
         }
         
         suits_name = ["Spades", "Diamonds", "Hearts", "Clubs"]
-        suits_symbols = ["♠".colorize(:blue), "♦".colorize(:red), "♥".colorize(:red), "♣".colorize(:blue)]
+        suits_symbols = ["♠", "♦", "♥", "♣"]
         colors = ["Red", "Black"]
         suits_hash = {"Spades" => 'Black', "Diamonds" => "Red", "Hearts" => "Red", "Clubs" => "Black"}
         suits_symbol = {"Spades" => "♠", "Diamonds" => "♦", "Hearts" => "♥", "Clubs" => "♣"}
