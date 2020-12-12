@@ -18,14 +18,14 @@ def instructions()
     a = Artii::Base.new 
     puts a.asciify("Level 2").colorize(:light_cyan)
     puts "Guess whether the next card revealed will be higher or lower your first card"
-    puts "NOTE: If it's the same you automatically lose..."
+    puts "NOTE: If it's the same you automatically lose... (Goalpost rule)"
     puts card2
     a = Artii::Base.new 
     puts a.asciify("Level 3").colorize(:light_cyan)
     puts "Guess whether the next card is inside or outside of the range of the previous two card"
     puts card3
     puts "In the example above, 5 is inside the range of 4 and 9, therefore a correct guess of 'inside' will make you correct"
-    puts "NOTE: If the card is the same as any of your previous two cards, you automatically lose!"
+    puts "NOTE: If the card is the same as any of your previous two cards, you automatically lose! (Goalpost rule)"
     a = Artii::Base.new 
     puts a.asciify("Level 4").colorize(:light_cyan)
     puts card4
