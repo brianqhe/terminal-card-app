@@ -1,5 +1,6 @@
 require 'colorize'
 require 'artii'
+require 'tty-prompt'
 
 module Game
     @counter = 0
@@ -15,6 +16,7 @@ module Game
 
     def game_start()
         system("clear")
+        prompt = TTY::Prompt.new
         a = Artii::Base.new 
         puts a.asciify("Game Start !").colorize(:light_blue)
 
@@ -60,9 +62,9 @@ module Game
                 suit = random_suit(suits_symbols)
                 card = [["┌───────────┐"],["│ #{card_number}         │"],["│           │"],["│           │"],["│     #{suit}     │"],["│           │"],["│           │"],["│         #{card_number} │"],["└───────────┘"],]
                 puts facedown_card
-                puts "Guess whether the card is red or black"
-                guess = gets.chomp.capitalize
-                if guess == symbol_colour[suit]
+                level1_options = {Red: 'Red', Black: 'Black'}
+                red_or_black = prompt.select("Red or black?".colorize(:blue), level1_options)
+                if red_or_black == symbol_colour[suit]
                     puts card
                     puts "\nCorrect!".colorize(:green)
                     level_1 = false
@@ -78,8 +80,8 @@ module Game
                 random_number2 = random_key(card_values)
                 random_suit2 = random_suit(suits_symbols)
                 card2 = [["┌───────────┐"],["│ #{random_number2}         │"],["│           │"],["│           │"],["│     #{random_suit2}     │"],["│           │"],["│           │"],["│         #{random_number2} │"],["└───────────┘"],]
-                puts "Guess whether your next card is higher or lower"
-                higher_or_lower = gets.chomp
+                level2_options = {Higher: 'higher', Lower: 'lower'}
+                higher_or_lower = prompt.select("Higher or Lower?".colorize(:blue), level2_options)
                 if higher_or_lower == "higher" && ((card_values[random_number2.to_s].to_i > card_values[card_number.to_s].to_i) == true)
                     puts card2
                     puts "\nCorrect!".colorize(:green)
@@ -110,8 +112,8 @@ module Game
                     card_number = temporary
                 end
                 card3 = [["┌───────────┐"],["│ #{random_number3}         │"],["│           │"],["│           │"],["│     #{random_suit3}     │"],["│           │"],["│           │"],["│         #{random_number3} │"],["└───────────┘"],]
-                puts "Guess whether your next card is inside or outside your previous two cards"            
-                inside_or_outside = gets.chomp
+                level3_options = {Inside: 'inside', Outside: 'outside'}
+                inside_or_outside = prompt.select("Inside or Outside?".colorize(:blue), level3_options)
                 inside = card_values[random_number3.to_s].to_i > card_values[card_number.to_s].to_i && card_values[random_number3.to_s].to_i < card_values[random_number2.to_s].to_i
                 outside = card_values[random_number3.to_s].to_i < card_values[card_number.to_s].to_i || card_values[random_number3.to_s].to_i > card_values[random_number2.to_s].to_i
                 if inside_or_outside == "inside" && inside
@@ -139,8 +141,8 @@ module Game
                 random_number4 = card_values.keys.sample.to_s
                 random_suit4 = suits_symbols.sample.to_s
                 card4 = [["┌───────────┐"],["│ #{random_number4}         │"],["│           │"],["│           │"],["│     #{random_suit4}     │"],["│           │"],["│           │"],["│         #{random_number4} │"],["└───────────┘"],]
-                puts "Guess what suit your next card will be (spades, clubs, hearts, diamonds)"            
-                what_suit = gets.chomp
+                level4_options = {Spades: 'spades', Hearts: 'hearts', Clubs: 'clubs', Diamonds: 'diamonds'}
+                what_suit = prompt.select("Suit?".colorize(:blue), level4_options)
                 if what_suit == "spades" && random_suit4 == "♠"
                     puts card4
                     puts "\nCorrect!".colorize(:green)
@@ -194,8 +196,8 @@ module Game
                 end 
             end
             while play_again == true
-                puts "would you like to play again? (y/n)"
-                again = gets.chomp()
+                again_options = {Yes: 'y', No: 'n'}
+                again = prompt.select("Would you like to play again?".colorize(:blue), again_options)
                     if again == "y"
                         level_1 = true
                         play_again = false
