@@ -42,6 +42,7 @@ def display_menu()
         system("clear")
         display_menu()
     when 3
+        puts a.asciify("Hall of Shame !").colorize(:cyan)
         puts "Here are the current the scores"
         Game.display_scores()
         punishments = ["do 10 pushups", "do 20 star jumps", "do 10 sit ups", "do 5 squat jumps"]
