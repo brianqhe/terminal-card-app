@@ -14,3 +14,10 @@ describe 'select suit' do
         expect(Game.random_suit(["♠", "♦", "♥", "♣"])).to eq("♠").or(eq("♦")).or(eq("♥")).or(eq("♣"))
     end
 end
+
+describe 'displays scores' do
+    it 'displays the scoreboard' do
+        @scoreboard = {}
+        expect(Game.display_scores()).to eq("The scoreboard is currently empty...")
+    end
+end
