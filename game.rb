@@ -58,6 +58,7 @@ module Game
     
         while game == true
             while level_1 == true
+                puts a.asciify("Level 1").colorize(:light_cyan)
                 card_number = random_key(card_values)
                 suit = random_suit(suits_symbols)
                 card = [["┌───────────┐"],["│ #{card_number}         │"],["│           │"],["│           │"],["│     #{suit}     │"],["│           │"],["│           │"],["│         #{card_number} │"],["└───────────┘"],]
@@ -77,6 +78,7 @@ module Game
                 end
             end
             while level_2 == true
+                puts a.asciify("Level 2").colorize(:light_cyan)
                 random_number2 = random_key(card_values)
                 random_suit2 = random_suit(suits_symbols)
                 card2 = [["┌───────────┐"],["│ #{random_number2}         │"],["│           │"],["│           │"],["│     #{random_suit2}     │"],["│           │"],["│           │"],["│         #{random_number2} │"],["└───────────┘"],]
@@ -104,6 +106,7 @@ module Game
                 end
             end
             while level_3 == true
+                puts a.asciify("Level 3").colorize(:light_cyan)
                 random_number3 = card_values.keys.sample.to_s
                 random_suit3 = suits_symbols.sample.to_s
                 if random_number2 < card_number
@@ -138,6 +141,7 @@ module Game
                 end 
             end
             while level_4 == true
+                puts a.asciify("Level 4").colorize(:light_cyan)
                 random_number4 = card_values.keys.sample.to_s
                 random_suit4 = suits_symbols.sample.to_s
                 card4 = [["┌───────────┐"],["│ #{random_number4}         │"],["│           │"],["│           │"],["│     #{random_suit4}     │"],["│           │"],["│           │"],["│         #{random_number4} │"],["└───────────┘"],]
