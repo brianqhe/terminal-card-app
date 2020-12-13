@@ -1,4 +1,4 @@
-require_relative '../game'
+require_relative '../model/game'
 
 describe 'card number' do
     it 'picks a key in a hash' do
