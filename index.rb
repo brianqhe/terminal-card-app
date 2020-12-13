@@ -1,7 +1,7 @@
-require_relative 'validator'
-require_relative 'game'
-require_relative 'punishments'
-require_relative 'instructions'
+require_relative 'controller/validator'
+require_relative 'model/game'
+require_relative 'model/punishments'
+require_relative 'view/instructions'
 require 'artii'
 require 'colorize'
 include Punishments

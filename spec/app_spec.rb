@@ -1,4 +1,4 @@
-require_relative '../validator'
+require_relative '../controller/validator'
 
 describe 'validates' do
     it 'checks if input is valid' do
