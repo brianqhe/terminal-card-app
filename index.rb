@@ -13,10 +13,10 @@ def gets
 end
 
 def display_menu()
-    punishments = ["do 10 pushups", "do 20 star jumps", "do 10 sit ups", "do 5 squat jumps"]
+    punishments = {'Pushups' => 20, 'Squat jumps' => 30, 'Sit ups' => 50, 'Burpees' => 15}
     if ARGV[0] == '-h' || ARGV[0] == '-help' 
         Instructions.help()
-        puts "Press enter to continue"
+        puts "Press enter to continue".colorize(:blue)
         gets.chomp()
         ARGV.clear
         input = 0
@@ -25,7 +25,7 @@ def display_menu()
         ARGV.clear
     elsif ARGV[0].to_i > 4
         puts "You didn't enter a correct menu option between 1 - 5"
-        puts "Press enter to continue"
+        puts "Press enter to continue".colorize(:blue)
         gets.chomp()
         ARGV.clear
     else
@@ -45,7 +45,7 @@ def display_menu()
         input_valid = Validator.validate_input(input)
         if !input_valid
             puts "Invalid input, please enter a number from 1-5"
-            puts "Press enter to continue"
+            puts "Press enter to continue".colorize(:blue)
             gets
             display_menu()
         end
@@ -61,7 +61,7 @@ def display_menu()
         puts "Returning to Main Menu..."
     when 2
         Instructions.instructions()
-        puts "Press enter to return to main menu..."
+        puts "Press enter to return to main menu...".colorize(:blue)
         gets
         system("clear")
         display_menu()
@@ -71,14 +71,14 @@ def display_menu()
         puts "Here are the current the scores"
         Game.display_scores()
         Punishments.display_punishments(punishments)
-        puts "Press enter to return to main menu..."
+        puts "Press enter to return to main menu...".colorize(:blue)
         gets
         system("clear")
         display_menu()
     when 4
         puts Game.display_lowest()
         puts Punishments.random_punshiment(punishments)
-        puts "Press enter to return to main menu..."
+        puts "\nPress enter to return to main menu...".colorize(:blue)
         gets
         system("clear")
         display_menu()

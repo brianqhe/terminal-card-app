@@ -1,6 +1,7 @@
 require 'colorize'
 require 'artii'
 require 'tty-prompt'
+require 'terminal-table'
 
 module Game
     @counter = 0
@@ -220,9 +221,12 @@ module Game
 
     def display_scores()
         if @scoreboard.empty?
-            puts "The scoreboard is currently empty..."
+            puts "The scoreboard is currently empty...".colorize(:red)
         else
-            @scoreboard.each {|key,value| puts "#{key.capitalize} has taken #{value} turns to finish the game"}
+            rows = []
+            @scoreboard.each {|key,value| rows << [key,value]}
+            table = Terminal::Table.new :headings => ['Player', 'Score'], :rows => rows
+            puts table
         end
     end
 
@@ -231,7 +235,7 @@ module Game
             system("clear")
             a = Artii::Base.new 
             puts a.asciify("Judgement Time !").colorize(:magenta)
-            puts "The scoreboard is currently empty..."
+            puts "The scoreboard is currently empty...".colorize(:red)
         else
             system("clear")
             a = Artii::Base.new 
