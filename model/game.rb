@@ -75,6 +75,7 @@ module Game
                     puts card
                     puts "\nIncorrect...".colorize(:red)
                     @counter += 1
+                    puts "You have so far taken #{@counter} turns..."
                 end
             end
             while level_2 == true
@@ -103,6 +104,7 @@ module Game
                     level_1 = true
                     level_3 = false
                     @counter += 1
+                    puts "You have so far taken #{@counter} turns..."
                 end
             end
             while level_3 == true
@@ -138,6 +140,7 @@ module Game
                     level_4 = false
                     level_1 = true
                     @counter += 1
+                    puts "You have so far taken #{@counter} turns..."
                 end 
             end
             while level_4 == true
@@ -166,7 +169,6 @@ module Game
                     play_again = true
                     @counter +=1
                     @scoreboard[name] = @counter
-                    puts @hash
                     @counter = 0
                     next
                 elsif what_suit == "clubs" && random_suit4 == "♣"
@@ -177,7 +179,6 @@ module Game
                     play_again = true
                     @counter +=1
                     @scoreboard[name] = @counter
-                    puts @hash
                     @counter = 0
                     next
                 elsif what_suit == "diamonds" && random_suit4 == "♦"
@@ -188,7 +189,6 @@ module Game
                     play_again = true
                     @counter +=1
                     @scoreboard[name] = @counter
-                    puts @hash
                     @counter = 0
                     next
                 else
@@ -197,6 +197,7 @@ module Game
                     level_4 = false
                     level_1 = true
                     @counter += 1
+                    puts "You have so far taken #{@counter} turns..."
                 end 
             end
             while play_again == true
