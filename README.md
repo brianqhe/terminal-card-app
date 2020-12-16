@@ -66,14 +66,22 @@ The game features a live scoreboard that will update every time a player has fin
 ## User Interaction and Experience
 --- 
 
+The application will run with a main menu feature that will allow the user to navigate throughout the application. The application will prompt the user to input a valid number to access the corresponding section of the main menu. To handle errors or invalid input, a validator has been created to make sure the input is valid and will not terminate the application prematurely. If invalid input has been made, it will notify the user and prompt them to input the correct option instead. Ultimately the user can exit the program through the main menu with one of the options displayed on the screem. Each menu item is clearly labelled so that the user will be able to know what they are navigating to. 
 
+The main feature that the users of this application will use is the card game itself. Users will first be prompted to enter their name so that their name and score can be added to the scoreboard. The game will then proceed directly to Level 1 for which the game will prompt the user to select whether they think the first card will be black or red. To minimise errors of incorrect input or through typing, a Ruby Gem tty-prompt has been used so that users can select options directly through their arrow keys and the enter key. This reduces the error of a user making an typing errors when being prompted for inputs at each level. To make it easier for the user to keep track of what stage they are at, the Ruby Gem artii was used to create large customised font to differentiate between each level. Additionally, after each answer made by the user, the application will display whether their guess was correct or incorrect. To make this display more clearly to the users, the Ruby Gem colorize was used to turn incorrect guess displays as red, and correct displays with green. Whenever the user is prompted for a response of selection, the application clearly states what they are being asked to respond.
+
+Finally, the application will have a feature to display the current scoreboard as well as a list of all currently available punishments. This section is accessible through the main menu. If the scoreboard is empty, instead of displaying an error, the game will instead notify the user that the scoreboard is currently empty. To make the scoreboard and list of punishments more easily viewable, the Ruby Gem terminal-table was used to display all of these features in a more legible fashion. When displaying the loser of the game once all users have finished attempting the game, the game will automatically calculate the person with the lowest score and randomly select a punishment for them. The instructions page feature provides a full summary of the rules of the game, and how the game determines who is the loser in further detail.
 
  
 ## Control Flow Diagram
 --- 
 
+
+
 ## Implementation Plan
 ---
+
+
 
 
 ## How to install and use
