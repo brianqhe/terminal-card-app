@@ -78,6 +78,7 @@ Finally, the application will have a feature to display the current scoreboard a
 
 
 
+
 ## Implementation Plan
 ---
 
@@ -93,15 +94,57 @@ As seen in the screenshot above, each feature has been split into its own sectio
 ---
 
 ### Languages Used
+---
 
+Ruby
 
 ### Command Line Arguments
+---
 
+- -help | -h
+
+-Brings up the help message for this application
+
+- -instruction | -i
+
+Brings up the instructions for the application game
+
+- 1
+
+Takes you directly to the game
+
+- 2 
+
+Takes you directly to the instructions of the game
+
+- 3
+
+Takes you directly to the scoreboard and list of current punishments
+
+- 4 
+
+Takes you directly to the Hall of Shame
 
 ### Gems
+---
 
+- Bundler
+- Rspec
+- Colorize
+- Artii
+- Tty-prompt
+- Terminal-table
 
-### Bash Shell Scripts
+To install all Ruby Gem dependencies, run the below command
 
+` ./install_dependencies.sh`
 
 ### To install and Run
+---
+To install all Ruby Gem dependencies, run the below command
+
+` ./install_dependencies.sh`
+
+To run the application, run the below command
+
+` ./run_app.sh`

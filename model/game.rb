@@ -4,7 +4,7 @@ require 'tty-prompt'
 require 'terminal-table'
 
 module Game
-    @counter = 0
+    @counter = 1
     @scoreboard = {}
 
     def self.random_suit(array)
@@ -64,7 +64,7 @@ module Game
                 suit = random_suit(suits_symbols)
                 card = [["┌───────────┐"],["│ #{card_number}         │"],["│           │"],["│           │"],["│     #{suit}     │"],["│           │"],["│           │"],["│         #{card_number} │"],["└───────────┘"],]
                 puts facedown_card
-                level1_options = {Red: 'Red', Black: 'Black'}
+                level1_options = {Red: 'Red', Black: 'Black', Quit: 'Quit'}
                 red_or_black = prompt.select("Red or black?".colorize(:blue), level1_options)
                 if red_or_black == symbol_colour[suit]
                     puts card
@@ -72,6 +72,13 @@ module Game
                     level_1 = false
                     level_2 = true
                     next
+                elsif red_or_black == 'Quit'
+                    puts "You have quit the game, your score has been set to automatically 100"
+                    level_1 = false
+                    play_again = true
+                    @counter = 100 
+                    @scoreboard[name] = @counter
+                    @counter = 0
                 else
                     puts card
                     puts "\nIncorrect...".colorize(:red)
@@ -84,7 +91,7 @@ module Game
                 random_number2 = random_key(card_values)
                 random_suit2 = random_suit(suits_symbols)
                 card2 = [["┌───────────┐"],["│ #{random_number2}         │"],["│           │"],["│           │"],["│     #{random_suit2}     │"],["│           │"],["│           │"],["│         #{random_number2} │"],["└───────────┘"],]
-                level2_options = {Higher: 'higher', Lower: 'lower'}
+                level2_options = {Higher: 'higher', Lower: 'lower', Quit: 'Quit'}
                 higher_or_lower = prompt.select("Higher or Lower?".colorize(:blue), level2_options)
                 if higher_or_lower == "higher" && ((card_values[random_number2.to_s].to_i > card_values[card_number.to_s].to_i) == true)
                     puts card2
@@ -98,6 +105,13 @@ module Game
                     level_2 = false
                     level_3 = true
                     next
+                elsif higher_or_lower == 'Quit'
+                    puts "You have quit the game, your score has been set to automatically 100"
+                    level_2 = false
+                    play_again = true
+                    @counter = 100 
+                    @scoreboard[name] = @counter
+                    @counter = 0
                 else
                     puts card2
                     puts "\nIncorrect...".colorize(:red)
@@ -118,7 +132,7 @@ module Game
                     card_number = temporary
                 end
                 card3 = [["┌───────────┐"],["│ #{random_number3}         │"],["│           │"],["│           │"],["│     #{random_suit3}     │"],["│           │"],["│           │"],["│         #{random_number3} │"],["└───────────┘"],]
-                level3_options = {Inside: 'inside', Outside: 'outside'}
+                level3_options = {Inside: 'inside', Outside: 'outside', Quit: 'Quit'}
                 inside_or_outside = prompt.select("Inside or Outside?".colorize(:blue), level3_options)
                 inside = card_values[random_number3.to_s].to_i > card_values[card_number.to_s].to_i && card_values[random_number3.to_s].to_i < card_values[random_number2.to_s].to_i
                 outside = card_values[random_number3.to_s].to_i < card_values[card_number.to_s].to_i || card_values[random_number3.to_s].to_i > card_values[random_number2.to_s].to_i
@@ -134,6 +148,13 @@ module Game
                     level_3 = false
                     level_4 = true
                     next
+                elsif inside_or_outside == 'Quit'
+                    puts "You have quit the game, your score has been set to automatically 100"
+                    level_3 = false
+                    play_again = true
+                    @counter = 100 
+                    @scoreboard[name] = @counter
+                    @counter = 0
                 else
                     puts card3
                     puts "\nIncorrect...".colorize(:red)
@@ -149,7 +170,7 @@ module Game
                 random_number4 = card_values.keys.sample.to_s
                 random_suit4 = suits_symbols.sample.to_s
                 card4 = [["┌───────────┐"],["│ #{random_number4}         │"],["│           │"],["│           │"],["│     #{random_suit4}     │"],["│           │"],["│           │"],["│         #{random_number4} │"],["└───────────┘"],]
-                level4_options = {Spades: 'spades', Hearts: 'hearts', Clubs: 'clubs', Diamonds: 'diamonds'}
+                level4_options = {Spades: 'spades', Hearts: 'hearts', Clubs: 'clubs', Diamonds: 'diamonds', Quit: 'Quit'}
                 what_suit = prompt.select("Suit?".colorize(:blue), level4_options)
                 if what_suit == "spades" && random_suit4 == "♠"
                     puts card4
@@ -192,6 +213,13 @@ module Game
                     @scoreboard[name] = @counter
                     @counter = 0
                     next
+                elsif what_suit == 'Quit'
+                    puts "You have quit the game, your score has been set to automatically 100"
+                    level_4 = false
+                    play_again = true
+                    @counter = 100 
+                    @scoreboard[name] = @counter
+                    @counter = 0
                 else
                     puts card4
                     puts "\nIncorrect...".colorize(:red)
@@ -207,7 +235,7 @@ module Game
                     if again == "y"
                         level_1 = true
                         play_again = false
-                        print "Enter you name: "
+                        print "Enter you name: ".colorize(:blue)
                         name = gets.chomp()
                         game = true
                     else
@@ -225,7 +253,7 @@ module Game
         else
             rows = []
             @scoreboard.each {|key,value| rows << [key,value]}
-            table = Terminal::Table.new :headings => ['Player', 'Score'], :rows => rows
+            table = Terminal::Table.new :headings => ['Player', 'Turns'], :rows => rows
             puts table
         end
     end
@@ -241,7 +269,14 @@ module Game
             a = Artii::Base.new 
             puts a.asciify("Judgement Time !").colorize(:magenta)
             maximum = @scoreboard.values.max
-            puts "The person who took the most number of turns was #{@scoreboard.key(maximum)}"
+            loser_count = @scoreboard.values.count(maximum)
+            if loser_count > 1
+                losers = @scoreboard.select {|key,value| value >= maximum}
+                losers.each {|k,v| puts "#{k.capitalize} took #{v} turns to complete the game..."}
+                puts "Unfortunately they'll have to do the punishment..."
+            else
+                puts "The person who took the most number of turns was #{scoreboard.key(maximum)}"
+            end
         end
     end
 
