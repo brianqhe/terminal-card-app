@@ -27,7 +27,7 @@ def display_menu()
         input = 2
         ARGV.clear
     elsif ARGV[0].to_i > 4
-        puts "You didn't enter a correct menu option between 1 - 5"
+        puts "You didn't enter a correct command line argument, proceeding to main menu..."
         puts "Press enter to continue".colorize(:blue)
         gets.chomp()
         ARGV.clear
