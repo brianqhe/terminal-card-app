@@ -81,9 +81,27 @@ Finally, the application will have a feature to display the current scoreboard a
 ## Implementation Plan
 ---
 
+The overall implementation plan is to create the main feature of the game as its own module as the main priority. The different components of the game will also be broken down into different priorities and due dates. The subsequent features and different components of those features will also be broken down into different priorities and due dates. This implementation plan will be managed by the project management platform Trello. A screenshot of this implementation plan has been shown below.
 
 
 
-## How to install and use
+
+As seen in the screenshot above, each feature has been split into its own section, with its individual tasks and requirements listed underneath. For ease of management, the priority of each checklist task has been colour coded, with red being high priority, yellow being medium priority and green being low priority. Based on these colours, each task is given a certain deadline or due date.
+
+
+## How to Install and Use
 ---
 
+### Languages Used
+
+
+### Command Line Arguments
+
+
+### Gems
+
+
+### Bash Shell Scripts
+
+
+### To install and Run
