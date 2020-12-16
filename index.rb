@@ -23,6 +23,9 @@ def display_menu()
     elsif ARGV[0].to_i > 0 && ARGV[0].to_i < 5 && ARGV.length == 1
         input = ARGV[0]
         ARGV.clear
+    elsif ARGV[0] == '-i' || ARGV[0] == '-instructions' 
+        input = 2
+        ARGV.clear
     elsif ARGV[0].to_i > 4
         puts "You didn't enter a correct menu option between 1 - 5"
         puts "Press enter to continue".colorize(:blue)
