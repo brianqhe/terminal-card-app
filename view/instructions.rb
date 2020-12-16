@@ -3,6 +3,22 @@ module Instructions
         system("clear")
         a = Artii::Base.new 
         puts a.asciify("Instructions").colorize(:light_green)
+        instructions_values = {
+            "2" => 2,
+            "3" => 3,
+            "4" => 4,
+            "5"=> 5,
+            "6"=> 6,
+            "7"=> 7,
+            "8"=> 8,
+            "9"=> 9,
+            "10"=> 10,
+            "J"=> 11,
+            "Q"=> 12,
+            "K"=> 13,
+            "A" => 14
+        }
+        instructions_symbols = {"♠" => 'Black', "♦" => 'Red', "♥" => 'Red', "♣" => 'Black'}
         facedown_card = [["┌───────────┐"], ["│░░░░░░░░░░░│"], ["│░░░░░░░░░░░│"], ["│░░░░░░░░░░░│"], ["│░░░░░░░░░░░│"], ["│░░░░░░░░░░░│"], ["│░░░░░░░░░░░│"], ["│░░░░░░░░░░░│"], ["│░░░░░░░░░░░│"], ["└───────────┘"]]
         card1 = [["┌───────────┐"],["│ 4         │"],["│           │"],["│           │"],["│     ♠     │"],["│           │"],["│           │"],["│         4 │"],["└───────────┘"],]
         card2 = [["┌───────────┐"],["│ 9         │"],["│           │"],["│           │"],["│     #{"♥".colorize(:red)}     │"],["│           │"],["│           │"],["│         9 │"],["└───────────┘"],]
@@ -28,7 +44,23 @@ module Instructions
         puts card4
         puts "Guess the suit of your last card"
         puts "The player who takes the least amount of turns to RIDE THE BUS wins!"
-        puts "Good luck!"
+
+        puts a.asciify("Card Values").colorize(:light_cyan)
+        puts "Here are the values of the cards for this game!"
+
+        rows1 = []
+        instructions_values.each {|key,value| rows1 << [key,value]}
+        table1 = Terminal::Table.new :headings=> ['Card', 'Value'], :rows => rows1
+        puts table1
+
+        puts a.asciify("Suit Colors").colorize(:light_cyan)
+        puts "Here are the colours of the suits!"
+        rows2 = []
+        instructions_symbols.each {|key,value| rows2 << [key,value]}
+        table2 = Terminal::Table.new :headings=> ['Suit', 'Colour'], :rows => rows2
+        puts table2
+
+        puts "\nGood luck!"
     end
 
     def help()
