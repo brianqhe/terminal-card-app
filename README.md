@@ -147,6 +147,12 @@ To install all Ruby Gem dependencies, run the below command
 
 ### To install and Run
 ---
+
+Github link
+
+[https://github.com/brianqhe/terminal-card-app](https://github.com/brianqhe/terminal-card-app)
+
+
 To install all Ruby Gem dependencies, run the below command
 
 ` ./install_dependencies.sh`
