@@ -65,5 +65,7 @@ module Instructions
 
     def help()
         puts "These are the help instructions - "
+        puts "To exit the game at any time, press ctrl+c"
+        puts "To continue to the game, simply press Enter"
     end
 end
