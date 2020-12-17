@@ -50,18 +50,22 @@ The first feature when loading the app will be a navigatable menu that will take
 
 Each section will be allocated a number and the user will access the section by inputting the corresponding number. If invalid input has been entered, the application will detect this and request the user to try again. The program is written in such a way that the user will always eventually loop back to the main menu so they can navigate through various sections of the application, and ultimately exit the game through there also. 
 
+![Menu feature](docs/menu-screenshot.PNG)
+
 ### Feature 2 - Unique Playable Game
 ---
 The Ride the Bus card game is designed so that the player will loop through each of the four levels depending on whether they passed the level or not. Each player will have their own unique experience as each time there is a new variable, the local variables at each stage of the loop is set to a new value. This unique experience is also present when the player fails their initial attempt and has to go back to level 1 to try again, whereby their cards will also be different. 
 
 To address error handling, the Ruby gem Tty-prompt was used so that users would be prompted by the program to make their selection on each level. This prompt would be selectable through their keyboard and removes the margin of error that a player may type their selection incorrectly. 
 
+![Game feature](docs/game-screenshot.PNG)
 
 ### Feature 3 - Live Scoreboard with Loser Selection
 ---
 
 The game features a live scoreboard that will update every time a player has finished the game. Firstly each score is set as a local variable that is initially assigned a value of 0. Within the game loop, this score will increase by 1 each time the player has failed to complete the game. Each time a player has inputted their name and completed all four levels cumulatively, their name and score will be added as a new key, value pair into a scoreboard hash. The scoreboard is an instance variable that acts as the hash to store all player and their respective scores in the Game module. 
 
+![Menu feature](docs/scoreboard-screenshot.PNG)
 
 ## User Interaction and Experience
 --- 
@@ -84,9 +88,9 @@ Finally, the application will have a feature to display the current scoreboard a
 
 The overall implementation plan is to create the main feature of the game as its own module as the main priority. The different components of the game will also be broken down into different priorities and due dates. The subsequent features and different components of those features will also be broken down into different priorities and due dates. This implementation plan will be managed by the project management platform Trello. A screenshot of this implementation plan has been shown below.
 
-![Trello Project Management Screenshot 1](docs/implementation-plan1.png)
+![Trello Project Management Screenshot 1](docs/implementation-plan1.PNG)
 
-![Trello Project Management Screenshot 2](docs/implementation-plan2.png)
+![Trello Project Management Screenshot 2](docs/implementation-plan2.PNG)
 
 
 As seen in the screenshot above, each feature has been split into its own section, with its individual tasks and requirements listed underneath. For ease of management, the priority of each checklist task has been colour coded, with red being high priority, yellow being medium priority and green being low priority. Based on these colours, each task is given a certain deadline or due date.
