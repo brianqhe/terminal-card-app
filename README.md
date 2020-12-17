@@ -76,7 +76,7 @@ Finally, the application will have a feature to display the current scoreboard a
 ## Control Flow Diagram
 --- 
 
-
+![Control Flow diagram](docs/control-flow.png)
 
 
 ## Implementation Plan
