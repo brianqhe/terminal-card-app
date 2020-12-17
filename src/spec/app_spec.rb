@@ -1,5 +1,6 @@
 require_relative '../controller/validator'
 
+# Rspec test to check for menu validator
 describe 'validates' do
     it 'checks if input is valid' do
         expect(Validator.validate_input("1")).to eq(true)

@@ -8,12 +8,15 @@ include Punishments
 include Game
 include Instructions
 
+# Method to make ARGV and gets functions operate normally
 def gets
     STDIN.gets
 end
 
+# Method that is called to make the menu start on initialisation
 def display_menu()
     punishments = {'Pushups' => 20, 'Squat jumps' => 30, 'Sit ups' => 50, 'Burpees' => 15}
+    # ARGV commands available on initial start
     if ARGV[0] == '-h' || ARGV[0] == '-help' 
         Instructions.help()
         puts "Press enter to continue".colorize(:blue)
@@ -54,6 +57,7 @@ def display_menu()
         end
     end
 
+    # Case statements to validate input and bring the user to the correct menu item
     case input.to_i
     when 0
         display_menu()
@@ -91,4 +95,5 @@ def display_menu()
     end
 end
 
+# Calling the method to execute the program 
 display_menu()

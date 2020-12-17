@@ -4,17 +4,21 @@ require 'tty-prompt'
 require 'terminal-table'
 
 module Game
+    # Instance variables for scoreboard
     @counter = 1
     @scoreboard = {}
 
+    # Method to select a random suit
     def self.random_suit(array)
         array.sample
     end
 
+    # Method to select a random card number
     def self.random_key(hash)
         hash.keys.sample.to_s
     end
 
+    # Method to start the game
     def game_start()
         system("clear")
         prompt = TTY::Prompt.new
@@ -54,10 +58,13 @@ module Game
         level_4 = false
         play_again = false
         
+        # Promot to enter your name
         print "Enter your name: ".colorize(:blue)
         name = gets.chomp.capitalize()
     
+        # Loop for game
         while game == true
+            # Loop for level 1
             while level_1 == true
                 puts a.asciify("Level 1").colorize(:light_cyan)
                 card_number = random_key(card_values)
@@ -90,6 +97,7 @@ module Game
                     puts "You have so far taken #{@counter} turns..."
                 end
             end
+            # Loop for level 2
             while level_2 == true
                 puts a.asciify("Level 2").colorize(:light_cyan)
                 random_number2 = random_key(card_values)
@@ -130,6 +138,7 @@ module Game
                     puts "You have so far taken #{@counter} turns..."
                 end
             end
+            # Loop for level 3
             while level_3 == true
                 puts a.asciify("Level 3").colorize(:light_cyan)
                 random_number3 = card_values.keys.sample.to_s
@@ -177,6 +186,7 @@ module Game
                     puts "You have so far taken #{@counter} turns..."
                 end 
             end
+            # Loop for level 4
             while level_4 == true
                 puts a.asciify("Level 4").colorize(:light_cyan)
                 random_number4 = card_values.keys.sample.to_s
@@ -245,6 +255,7 @@ module Game
                     puts "You have so far taken #{@counter} turns..."
                 end 
             end
+            # Loop to check if user wants to play again
             while play_again == true
                 again_options = {Yes: 'y', No: 'n'}
                 again = prompt.select("Would you like to play again?".colorize(:blue), again_options)
@@ -263,6 +274,7 @@ module Game
         end
     end
 
+    # Method to display the scoreboard and an alternate message if empty
     def display_scores()
         if @scoreboard.empty?
             puts "The scoreboard is currently empty...".colorize(:red)
@@ -274,6 +286,7 @@ module Game
         end
     end
 
+    # Method to display the loser of all the players that have played the game, displays multiple losers if highest number of turns is same for people
     def display_lowest()
         if @scoreboard.empty?
             system("clear")

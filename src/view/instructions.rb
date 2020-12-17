@@ -1,4 +1,5 @@
 module Instructions
+    # Method for instructions to display correctly
     def instructions()
         system("clear")
         a = Artii::Base.new 

@@ -1,6 +1,6 @@
 require_relative '../model/game'
 
-
+# Rspec test to ensure a random card is picked from its corresponding value
 describe 'card number' do
     it 'picks a key in a hash' do
         expect(Game.random_key({'key' => 'value'})).to eq('key')
@@ -8,6 +8,7 @@ describe 'card number' do
     end
 end
 
+# Rspec test to make sure a random suit is picked correctly
 describe 'select suit' do
     it 'picks a suit from the array' do
         expect(Game.random_suit(["A"])).to eq("A")
