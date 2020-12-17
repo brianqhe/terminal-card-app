@@ -291,7 +291,7 @@ module Game
                 losers.each {|k,v| puts "#{k.capitalize} took #{v} turns to complete the game..."}
                 puts "Unfortunately they'll have to do the punishment..."
             else
-                puts "The person who took the most number of turns was #{scoreboard.key(maximum)}"
+                puts "The person who took the most number of turns was #{@scoreboard.key(maximum)}"
             end
         end
     end
