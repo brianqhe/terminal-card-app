@@ -62,7 +62,11 @@ module Game
                 puts a.asciify("Level 1").colorize(:light_cyan)
                 card_number = random_key(card_values)
                 suit = random_suit(suits_symbols)
-                card = [["┌───────────┐"],["│ #{card_number}         │"],["│           │"],["│           │"],["│     #{suit}     │"],["│           │"],["│           │"],["│         #{card_number} │"],["└───────────┘"],]
+                if card_number.length > 1
+                    card = [["┌───────────┐"],["│ #{card_number}        │"],["│           │"],["│           │"],["│     #{suit}     │"],["│           │"],["│           │"],["│        #{card_number} │"],["└───────────┘"],]
+                else
+                    card = [["┌───────────┐"],["│ #{card_number}         │"],["│           │"],["│           │"],["│     #{suit}     │"],["│           │"],["│           │"],["│         #{card_number} │"],["└───────────┘"],]
+                end
                 puts facedown_card
                 level1_options = {Red: 'Red', Black: 'Black', Quit: 'Quit'}
                 red_or_black = prompt.select("Red or black?".colorize(:blue), level1_options)
@@ -90,7 +94,11 @@ module Game
                 puts a.asciify("Level 2").colorize(:light_cyan)
                 random_number2 = random_key(card_values)
                 random_suit2 = random_suit(suits_symbols)
-                card2 = [["┌───────────┐"],["│ #{random_number2}         │"],["│           │"],["│           │"],["│     #{random_suit2}     │"],["│           │"],["│           │"],["│         #{random_number2} │"],["└───────────┘"],]
+                if random_number2.length > 1
+                    card2 = [["┌───────────┐"],["│ #{random_number2}        │"],["│           │"],["│           │"],["│     #{random_suit2}     │"],["│           │"],["│           │"],["│        #{random_number2} │"],["└───────────┘"],]
+                else
+                    card2 = [["┌───────────┐"],["│ #{random_number2}         │"],["│           │"],["│           │"],["│     #{random_suit2}     │"],["│           │"],["│           │"],["│         #{random_number2} │"],["└───────────┘"],]
+                end
                 level2_options = {Higher: 'higher', Lower: 'lower', Quit: 'Quit'}
                 higher_or_lower = prompt.select("Higher or Lower?".colorize(:blue), level2_options)
                 if higher_or_lower == "higher" && ((card_values[random_number2.to_s].to_i > card_values[card_number.to_s].to_i) == true)
@@ -131,7 +139,11 @@ module Game
                     random_number2 = card_number
                     card_number = temporary
                 end
-                card3 = [["┌───────────┐"],["│ #{random_number3}         │"],["│           │"],["│           │"],["│     #{random_suit3}     │"],["│           │"],["│           │"],["│         #{random_number3} │"],["└───────────┘"],]
+                if random_number3.length > 1
+                    card3 = [["┌───────────┐"],["│ #{random_number3}        │"],["│           │"],["│           │"],["│     #{random_suit3}     │"],["│           │"],["│           │"],["│        #{random_number3} │"],["└───────────┘"],]
+                else
+                    card3 = [["┌───────────┐"],["│ #{random_number3}         │"],["│           │"],["│           │"],["│     #{random_suit3}     │"],["│           │"],["│           │"],["│         #{random_number3} │"],["└───────────┘"],]
+                end
                 level3_options = {Inside: 'inside', Outside: 'outside', Quit: 'Quit'}
                 inside_or_outside = prompt.select("Inside or Outside?".colorize(:blue), level3_options)
                 inside = card_values[random_number3.to_s].to_i > card_values[card_number.to_s].to_i && card_values[random_number3.to_s].to_i < card_values[random_number2.to_s].to_i
@@ -169,7 +181,11 @@ module Game
                 puts a.asciify("Level 4").colorize(:light_cyan)
                 random_number4 = card_values.keys.sample.to_s
                 random_suit4 = suits_symbols.sample.to_s
-                card4 = [["┌───────────┐"],["│ #{random_number4}         │"],["│           │"],["│           │"],["│     #{random_suit4}     │"],["│           │"],["│           │"],["│         #{random_number4} │"],["└───────────┘"],]
+                if random_number4.length > 1
+                    card4 = [["┌───────────┐"],["│ #{random_number4}        │"],["│           │"],["│           │"],["│     #{random_suit4}     │"],["│           │"],["│           │"],["│        #{random_number4} │"],["└───────────┘"],]
+                else
+                    card4 = [["┌───────────┐"],["│ #{random_number4}         │"],["│           │"],["│           │"],["│     #{random_suit4}     │"],["│           │"],["│           │"],["│         #{random_number4} │"],["└───────────┘"],]
+                end
                 level4_options = {Spades: 'spades', Hearts: 'hearts', Clubs: 'clubs', Diamonds: 'diamonds', Quit: 'Quit'}
                 what_suit = prompt.select("Suit?".colorize(:blue), level4_options)
                 if what_suit == "spades" && random_suit4 == "♠"
